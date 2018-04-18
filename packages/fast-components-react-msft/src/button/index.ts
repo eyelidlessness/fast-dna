@@ -6,7 +6,7 @@ import {
     IButtonUnhandledProps,
     IFoundationProps
 } from "@microsoft/fast-components-react-base";
-import manageJss, { HOCProps } from "@microsoft/fast-jss-manager-react";
+import manageJss, { IHOCProps } from "@microsoft/fast-jss-manager-react";
 import { ButtonStyles, IDesignSystem } from "@microsoft/fast-components-styles-msft";
 
 export default manageJss(ButtonStyles)(Button);

@@ -1,4 +1,4 @@
-/**
+/*
  * manageJss is a higher-order function that returns a higher-order component.
  * The HOC that is returned is responsible for managing JSS stylesheets for components
  * registered with manageJss.
@@ -16,24 +16,24 @@ import { isEqual, merge, omit } from "lodash-es";
 /* tslint:disable-next-line */
 const hoistNonReactStatics: any = require("hoist-non-react-statics");
 
-/**
+/*
  * State interface for JSS manager
  */
 export interface IJSSManagerState {
-    /**
+    /*
      * Stores a JSS stylesheet containing all config-driven styles rules for a component
      */
     styleSheet?: any;
 }
 
-/**
+/*
  * JSS Manager props
  */
 export interface IJSSManagerProps<S, C> {
     jssStyleSheet?: Partial<ComponentStyles<S, C>>;
 }
 
-/**
+/*
  * Main entry into the style manager. This function accepts a JSS style object and returns a
  * higher order component. That higher-order component can then be used to compose a component
  * with styles managed
@@ -49,7 +49,7 @@ function manageJss<S, C>(styles?: ComponentStyles<S, C>): <T>(Component: React.C
                 designSystem: propTypes.any
             };
 
-            /**
+            /*
              * The style manager is responsible for attaching and detaching style elements when
              * components mount and un-mount
              */
@@ -67,7 +67,7 @@ function manageJss<S, C>(styles?: ComponentStyles<S, C>): <T>(Component: React.C
                 this.state = state;
             }
 
-            /**
+            /*
              * Updates a dynamic stylesheet with context
              */
             public updateStyleSheet(nextContext?: propTypes.any): void {
@@ -116,14 +116,14 @@ function manageJss<S, C>(styles?: ComponentStyles<S, C>): <T>(Component: React.C
                 );
             }
 
-            /**
+            /*
              * Get the design-system context to update the stylesheet with
              */
             private get designSystem(): any {
                 return this.context && this.context.designSystem ? this.context.designSystem : {};
             }
 
-            /**
+            /*
              * Remove a JSS stylesheet
              */
             private removeStyleSheet(): void {
@@ -134,7 +134,7 @@ function manageJss<S, C>(styles?: ComponentStyles<S, C>): <T>(Component: React.C
                 }
             }
 
-            /**
+            /*
              * Reset a JSS stylesheet relative to current props
              */
             private resetStyleSheet(): any {
@@ -150,7 +150,7 @@ function manageJss<S, C>(styles?: ComponentStyles<S, C>): <T>(Component: React.C
                 });
             }
 
-            /**
+            /*
              * Creates a JSS stylesheet from the dynamic portion of an associated style object and any style object passed
              * as props
              */
@@ -169,14 +169,14 @@ function manageJss<S, C>(styles?: ComponentStyles<S, C>): <T>(Component: React.C
                 return jssSheet;
             }
 
-            /**
+            /*
              * Checks to see if this component has an associated dynamic stylesheet
              */
             private hasStyleSheet(): boolean {
                 return Boolean(styles || this.props.jssStyleSheet);
             }
 
-            /**
+            /*
              * Merges static and dynamic stylesheet classnames into one object
              */
             private getClassNames(): ClassNames<S> {
